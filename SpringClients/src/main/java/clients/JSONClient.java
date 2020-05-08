@@ -1,5 +1,6 @@
 package clients;
 import models.Response;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import models.Temperature;
 
@@ -35,12 +36,13 @@ public class JSONClient {
         Temperature[] resultArray = restTemplate.getForObject(uri, Temperature[].class);
         List<Temperature> result = Arrays.asList(resultArray);
         for (Temperature b : result){
-            System.out.println(b.getId()+" by "+b.getTemperature());
+            System.out.println("Id: " + b.getId()+" Temperature: "+b.getTemperature() + " Humidity: " + b.getHumidity()
+            + " Lum: " + b.getLum());
         }
         return result;
     }
 
-    private static void createTemperature(int humidity, int temperature, int lum, int id)
+    private static void createTemperature(float humidity, float temperature, int lum, int id)
     {
         final String uri = "http://localhost:8080/temperature/add";
         Temperature newTemp = new Temperature(humidity, temperature, lum, id);
@@ -49,10 +51,21 @@ public class JSONClient {
         System.out.println(result.getMessage());
     }
 
+    public static void updateTemperature(float humidity, float temperature, int lum, int id){
+        final String uri = "http://localhost:8080/temperature/update";
+        Temperature upTemp = new Temperature(humidity, temperature, lum, id);
+        RestTemplate restTemplate = new RestTemplate();
+        Response result = restTemplate.postForObject(uri, upTemp, Response.class);
+        System.out.println(result.getMessage());
+
+    }
+
     public static void main(String[] args){
 
-        //getTemperature();
-        createTemperature(11, 11, 11, 11);
+        //getTemperatures();
+        createTemperature(12, 22, 22, 10);
+        //updateTemperature(9, 99, 99, 1);
+        //getTemperatureById(1);
 
     }
 }

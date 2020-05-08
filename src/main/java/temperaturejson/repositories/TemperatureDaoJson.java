@@ -14,7 +14,7 @@ import com.google.gson.reflect.TypeToken;
 public class TemperatureDaoJson implements ITemperatureDao {
 
     Gson gson = new Gson();
-    String temperatureListPath = "src/main/java/repositories/alltemp.json";
+    String temperatureListPath = "src/main/java/temperaturejson/repositories/alltemp.json";
 
     public List<Temperature> getAllTemperatures(){
         String json = new String();

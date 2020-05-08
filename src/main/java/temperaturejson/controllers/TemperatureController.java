@@ -9,6 +9,9 @@ import temperaturejson.repositories.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
+
 @RestController
 public class TemperatureController {
 
@@ -71,8 +74,9 @@ public class TemperatureController {
 
 
     @PostMapping("/temperature/add")
-    public Response addBook(@RequestBody Temperature b){
-        System.out.println(b.getId()+" "+b.getTemperature()+" "+b.getHumidity());
+    public Response addTemperature(@RequestBody Temperature b){
+        System.out.println("Id: " + b.getId()+" Temperature: "+b.getTemperature() + " Humidity: " + b.getHumidity()
+                + " Lum: " + b.getLum());
         Response res = new Response("Temperature added", Boolean.FALSE);
         temperatureList.add(b);
         res.setStatus(Boolean.TRUE);

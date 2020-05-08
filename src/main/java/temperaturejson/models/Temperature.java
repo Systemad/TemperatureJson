@@ -7,14 +7,14 @@ import java.io.Serializable;
 
 public class Temperature implements Serializable{
 
-    private int humidity;
-    private int temperature;
+    private float humidity;
+    private float temperature;
     private int lum;
     private int id;
 
     public Temperature(){}
 
-    public Temperature(int humidity, int temperature, int lum, int id) {
+    public Temperature(float humidity, float temperature, int lum, int id) {
         this.humidity = humidity;
         this.temperature = temperature;
         this.lum = lum;
@@ -25,7 +25,7 @@ public class Temperature implements Serializable{
         return humidity;
     }
 
-    public void setHumidity(int humidity) {
+    public void setHumidity(float humidity) {
         this.humidity = humidity;
     }
 
@@ -33,7 +33,7 @@ public class Temperature implements Serializable{
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(float temperature) {
         this.temperature = temperature;
     }
 
