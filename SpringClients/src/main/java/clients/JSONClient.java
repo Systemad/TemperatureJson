@@ -42,6 +42,8 @@ public class JSONClient {
         return result;
     }
 
+    /*
+    * Not working, not needed
     private static void createTemperature(float humidity, float temperature, int lum, int id)
     {
         final String uri = "http://localhost:8080/temperature/add";
@@ -50,6 +52,7 @@ public class JSONClient {
         Response result = restTemplate.postForObject( uri, newTemp, Response.class);
         System.out.println(result.getMessage());
     }
+     */
 
     public static void updateTemperature(float humidity, float temperature, int lum, int id){
         final String uri = "http://localhost:8080/temperature/update";
@@ -62,9 +65,9 @@ public class JSONClient {
 
     public static void main(String[] args){
 
-        //getTemperatures();
-        createTemperature(12, 22, 22, 10);
-        //updateTemperature(9, 99, 99, 1);
+        getTemperatures();
+        //createTemperature(12, 22, 22, 10);
+        //updateTemperature(88, 12, 89, 1);
         //getTemperatureById(1);
 
     }

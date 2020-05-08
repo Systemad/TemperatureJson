@@ -16,7 +16,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class TemperatureController {
 
     ITemperatureDao temperatureDao = new TemperatureDaoJson();
+
     List<Temperature> temperatureList = temperatureDao.getAllTemperatures();
+
 
     @RequestMapping("/temperatures")
     public List<Temperature> index() {
