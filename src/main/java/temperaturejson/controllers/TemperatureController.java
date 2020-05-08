@@ -1,9 +1,7 @@
 package temperaturejson.controllers;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import temperaturejson.models.Temperature;
 import temperaturejson.models.Response;
 import temperaturejson.repositories.*;
@@ -11,7 +9,7 @@ import temperaturejson.repositories.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@RestController
 public class TemperatureController {
 
     ITemperatureDao temperatureDao = new TemperatureDaoJson();
@@ -52,7 +50,7 @@ public class TemperatureController {
         return res;
     }
 
-    @RequestMapping("/book/{id}/delete")
+    @RequestMapping("/temperature/{id}/delete")
     public Response deleteBookById(@PathVariable("id") int id){
         Response res = new Response("Temperature deleted", Boolean.FALSE);
 
