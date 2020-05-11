@@ -47,38 +47,6 @@ public class JSONClient {
 
         return result;
     }
-    /*
-    private static List<Temperature> getAverage(int choice){
-        float sum = 0;
-        Scanner in = new Scanner(System.in);
-
-        final String uri = "http://localhost:8080/temperatures.json";
-        RestTemplate restTemplate = new RestTemplate();
-        Temperature[] resultArray = restTemplate.getForObject(uri, Temperature[].class);
-        List<Temperature> result = Arrays.asList(resultArray);
-
-        switch(choice){
-
-            case 1:
-                for (Temperature b : result){
-                    sum += b.getTemperature();
-                }
-                System.out.println("Average temperature: " + sum / result.size());
-                break;
-            case 2:
-                for (Temperature b : result){
-                    sum += b.getTemperature();
-                }
-                System.out.println("Medel temp: " + sum / result.size());
-
-            case 3:
-
-        }
-
-        return result;
-    }
-       */
-
 
     /*
     * Not working, not needed

@@ -6,6 +6,7 @@ import temperaturejson.models.Temperature;
 import temperaturejson.models.Response;
 import temperaturejson.repositories.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class TemperatureController {
 
     @RequestMapping("/temperature")
     public Temperature oneTemperature() {
-        return new Temperature(2, 18, 10, 111);
+        return new Temperature(2, 18, 10, 1, LocalDate.of(2008, 9, 1));
     }
 
 
