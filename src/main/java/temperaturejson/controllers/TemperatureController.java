@@ -32,7 +32,7 @@ public class TemperatureController {
 
 
     @RequestMapping("/temperature/{id}")
-    public Temperature getBookById(@PathVariable int id){
+    public Temperature getTemperatureById(@PathVariable int id){
         System.out.println("hej");
         Temperature res = new Temperature();
         for (Temperature b : temperatureList){
@@ -44,7 +44,7 @@ public class TemperatureController {
     }
 
     @RequestMapping("/temperaturesBetween/{idFrom}/{idTo}")
-    public List<Temperature> getBooksBetween(@PathVariable int idFrom, @PathVariable int idTo){
+    public List<Temperature> getTemperaturesBetween(@PathVariable int idFrom, @PathVariable int idTo){
         List<Temperature> res = new ArrayList();
         for (Temperature b : temperatureList){
             int id = b.getId();
@@ -56,7 +56,7 @@ public class TemperatureController {
     }
 
     @RequestMapping("/temperature/{id}/delete")
-    public Response deleteBookById(@PathVariable("id") int id){
+    public Response deleteTemperatureById(@PathVariable("id") int id){
         Response res = new Response("Temperature deleted", Boolean.FALSE);
 
         int indexToRemove = -1;
