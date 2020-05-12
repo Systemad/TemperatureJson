@@ -89,7 +89,7 @@ public class TemperatureController {
 
     @PostMapping("/temperature/update")
     public Response upsertTemperature(@RequestBody Temperature b){
-        Response res = new Response("Book updated", Boolean.FALSE);
+        Response res = new Response("Temperature updated", Boolean.FALSE);
 
         int indexToUpdate = -1;
         for (int i = 0; i < temperatureList.size(); i++){

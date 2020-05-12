@@ -13,7 +13,8 @@ public class JSONClient {
         final String uri = "http://localhost:8080/temperature.json";
         RestTemplate restTemplate = new RestTemplate();
         Temperature result = restTemplate.getForObject(uri, Temperature.class);
-        System.out.println(result.getId()+" by "+result.getTemperature());
+        System.out.println("Id: " + result.getId()+" Temperature: "+result.getTemperature() + " Humidity: " + result.getHumidity()
+                + " - Lum: " + result.getLum() + " - Energy Consumption: "  + result.getConsumption());
         return result;
     }
 
@@ -23,7 +24,8 @@ public class JSONClient {
         params.put("id", id);
         RestTemplate restTemplate = new RestTemplate();
         Temperature result = restTemplate.getForObject(uri, Temperature.class, params);
-        System.out.println(result.getId()+" by "+result.getTemperature());
+        System.out.println("Id: " + result.getId()+" Temperature: "+result.getTemperature() + " Humidity: " + result.getHumidity()
+                + " - Lum: " + result.getLum() + " - Energy Consumption: "  + result.getConsumption());
         return result;
     }
 
@@ -74,12 +76,50 @@ public class JSONClient {
     }
 
     public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        Scanner test = new Scanner(System.in);
 
-        //getAverage();
-        getTemperatures();
-        //createTemperature(12, 22, 22, 10);
-        //updateTemperature(88, 12, 89, 1);
-        //getTemperatureById(1);
+        boolean quit = false;
+        int choice;
+
+        System.out.println("1. One day");
+        System.out.println("2. Get all temperatures each day and average value + consumption");
+        System.out.println("3. Get temperature by id");
+        System.out.println("4. Change values");
+        System.out.println("0. Quit");
+
+        do{
+            System.out.println("Choose an option: ");
+            choice = sc.nextInt();
+            switch(choice){
+                case 1:
+                    getTemperature();
+                    break;
+                case 2:
+                    getTemperatures();
+                    break;
+                case 3:
+                    System.out.println("What temperature by id?: ");
+                    int ind = test.nextInt();
+                    getTemperatureById(ind);
+                    break;
+                case 4:
+                    System.out.println("Change value in order: id, temperature, humidity, lum, consumption");
+                    int id = test.nextInt();
+                    float temperature = test.nextFloat();
+                    float humidity = test.nextFloat();
+                    int lum = test.nextInt();
+                    int consumption = test.nextInt();
+                    updateTemperature(id, temperature, humidity, lum, consumption);
+                    break;
+
+                case 0:
+                    quit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }while(!quit);
 
     }
 }
