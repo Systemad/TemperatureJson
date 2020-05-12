@@ -10,15 +10,26 @@ public class Temperature implements Serializable{
     private float humidity;
     private float temperature;
     private int lum;
+    private int consumption;
     private int id;
 
     public Temperature(){}
 
-    public Temperature(float humidity, float temperature, int lum, int id) {
-        this.humidity = humidity;
-        this.temperature = temperature;
-        this.lum = lum;
+    public Temperature(int id, float temperature, float humidity, int lum, int consumption /*LocalDate localDate*/) {
         this.id = id;
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.lum = lum;
+        this.consumption = consumption;
+        //this.localDate = localDate;
+    }
+
+    public int getConsumption() {
+        return consumption;
+    }
+
+    public void setConsumption(int consumption) {
+        this.consumption = consumption;
     }
 
     public float getHumidity() {

@@ -32,6 +32,8 @@ public class JSONClient {
         float temp = 0;
         float hum = 0;
         int lum = 0;
+        int consumption = 0;
+
         RestTemplate restTemplate = new RestTemplate();
         Temperature[] resultArray = restTemplate.getForObject(uri, Temperature[].class);
         List<Temperature> result = Arrays.asList(resultArray);
@@ -39,11 +41,13 @@ public class JSONClient {
             temp += b.getTemperature();
             hum += b.getHumidity();
             lum += b.getLum();
+            consumption += b.getConsumption();
             System.out.println("Id: " + b.getId()+" Temperature: "+b.getTemperature() + " Humidity: " + b.getHumidity()
-            + " Lum: " + b.getLum());
+            + " - Lum: " + b.getLum() + " - Energy Consumption: "  + b.getConsumption());
         }
         System.out.println("Temperature Average: " + temp / result.size() +
                 " - Humidity Average: " + hum / result.size() + " - Lum Average: " + lum / result.size());
+        System.out.println("Total Energy Consumption: " + consumption + " kWh");
 
         return result;
     }
@@ -60,9 +64,9 @@ public class JSONClient {
     }
      */
 
-    public static void updateTemperature(float humidity, float temperature, int lum, int id){
+    public static void updateTemperature(int id, float temperature, float humidity, int lum, int consumption){
         final String uri = "http://localhost:8080/temperature/update";
-        Temperature upTemp = new Temperature(humidity, temperature, lum, id);
+        Temperature upTemp = new Temperature(id, temperature, humidity, lum, consumption);
         RestTemplate restTemplate = new RestTemplate();
         Response result = restTemplate.postForObject(uri, upTemp, Response.class);
         System.out.println(result.getMessage());

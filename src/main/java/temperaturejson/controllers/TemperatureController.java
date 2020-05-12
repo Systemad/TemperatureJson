@@ -28,7 +28,7 @@ public class TemperatureController {
 
     @RequestMapping("/temperature")
     public Temperature oneTemperature() {
-        return new Temperature(2, 18, 10, 1, LocalDate.of(2008, 9, 1));
+        return new Temperature(1, 25, 25, 1, 1);
     }
 
 
