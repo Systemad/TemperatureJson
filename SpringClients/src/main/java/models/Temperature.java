@@ -1,5 +1,6 @@
 package models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -13,6 +14,8 @@ public class Temperature implements Serializable{
     private int consumption;
     private int id;
 
+    //private LocalDate localDate;
+
     public Temperature(){}
 
     public Temperature(int id, float temperature, float humidity, int lum, int consumption /*LocalDate localDate*/) {
@@ -23,6 +26,17 @@ public class Temperature implements Serializable{
         this.consumption = consumption;
         //this.localDate = localDate;
     }
+
+    /*
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+     */
 
     public int getConsumption() {
         return consumption;

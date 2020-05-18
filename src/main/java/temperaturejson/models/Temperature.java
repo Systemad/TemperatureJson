@@ -7,12 +7,13 @@ import java.io.Serializable;
 
 
 public class Temperature implements Serializable{
-
+    //private static final long serialVersionUID = 1L;
     private float humidity;
     private float temperature;
     private int lum;
-    private int id;
     private int consumption;
+    private int id;
+
     //private LocalDate localDate;
 
     public Temperature(){}
@@ -26,10 +27,16 @@ public class Temperature implements Serializable{
         //this.localDate = localDate;
     }
 
-    //public LocalDate getLocalDate() {return localDate;}
+    /*
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
 
-    //public void setLocalDate(LocalDate localDate) {this.localDate = localDate;}
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
 
+     */
 
     public int getConsumption() {
         return consumption;

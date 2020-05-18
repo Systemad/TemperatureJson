@@ -7,6 +7,7 @@ import temperaturejson.models.Response;
 import temperaturejson.repositories.*;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class TemperatureController {
 
     @RequestMapping("/temperatures")
     public List<Temperature> index() {
+
         return temperatureList;
     }
 

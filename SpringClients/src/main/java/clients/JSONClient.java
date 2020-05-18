@@ -44,7 +44,7 @@ public class JSONClient {
             hum += b.getHumidity();
             lum += b.getLum();
             consumption += b.getConsumption();
-            System.out.println("Id: " + b.getId()+" Temperature: "+b.getTemperature() + " Humidity: " + b.getHumidity()
+            System.out.println("Id: " + b.getId()+" Temperature: " +b.getTemperature() + " Humidity: " + b.getHumidity()
             + " - Lum: " + b.getLum() + " - Energy Consumption: "  + b.getConsumption());
         }
         System.out.println("Temperature Average: " + temp / result.size() +
@@ -73,6 +73,21 @@ public class JSONClient {
         Response result = restTemplate.postForObject(uri, upTemp, Response.class);
         System.out.println(result.getMessage());
 
+    }
+
+    private static List<Temperature> CalculateCost(int cost){
+        final String uri = "http://localhost:8080/temperatures.json";
+        int consumption = 0;
+
+        RestTemplate restTemplate = new RestTemplate();
+        Temperature[] resultArray = restTemplate.getForObject(uri, Temperature[].class);
+        List<Temperature> result = Arrays.asList(resultArray);
+        for (Temperature b : result){
+            consumption += b.getConsumption();
+        }
+
+        System.out.println("Total Energy Consumption: " + consumption * cost + " SEK");
+        return result;
     }
 
     public static void main(String[] args){
@@ -112,7 +127,10 @@ public class JSONClient {
                     int consumption = test.nextInt();
                     updateTemperature(id, temperature, humidity, lum, consumption);
                     break;
-
+                case 5:
+                    System.out.println("How much does kWH cost?");
+                    int cost = test.nextInt();
+                    CalculateCost(cost);
                 case 0:
                     quit = true;
                     break;
