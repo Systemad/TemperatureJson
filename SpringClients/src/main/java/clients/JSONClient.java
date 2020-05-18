@@ -101,6 +101,7 @@ public class JSONClient {
         System.out.println("2. Get all temperatures each day and average value + consumption");
         System.out.println("3. Get temperature by id");
         System.out.println("4. Change values");
+        System.out.println("5. Calculate Cost");
         System.out.println("0. Quit");
 
         do{
@@ -128,7 +129,7 @@ public class JSONClient {
                     updateTemperature(id, temperature, humidity, lum, consumption);
                     break;
                 case 5:
-                    System.out.println("How much does kWH cost?");
+                    System.out.println("How much per sek kWH?");
                     int cost = test.nextInt();
                     CalculateCost(cost);
                 case 0:
